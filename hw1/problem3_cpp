@@ -1,0 +1,47 @@
+#include <iostream>  
+
+
+int main(){
+
+double a_dot_b;D;E[3];dotv;Z;dotb;Y;c;a[3];b[3];dot;dota;v[3];V[3];
+a[1]=2;a[2]=1;a[3]=3;
+b[1]=1;b[2]=1;b[3]=3;
+
+for (i=0;i<3;i++){
+dot+=a[i]*b[i];
+}//a*b
+
+for (i=0;i<3;i++){
+dota+=a[i]*a[i];
+}//a*a
+D=dot/dota;
+
+for (i=0;i<3;i++){
+E[i]+=D*a[i];
+}//E=D*a it is a vector
+
+for (i=0;i<3;i++){
+v=b[i]-E[i];
+}//v=b-E;
+
+for (i=0;i<3;i++){
+dotv=v[i]*v[i];
+}//v*v
+
+Z=sqrt(dotv);
+
+for (i=0;i<3;i++){
+dotb=b[i]*b[i];
+}//b*b;
+
+Y=sqrt(dotb);
+c=Y/Z;
+
+for (i=0;i<3;i++){
+V[i]=c*v[i];
+}//V=c*v;
+
+std::cout<<a<<std::endl;
+std::cout<<V<<std::endl;
+
+}
