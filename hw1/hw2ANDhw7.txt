@@ -1,0 +1,24 @@
+
+
+2
+(a)
+when  N is around 35 it gives 0
+
+(b)when N is around 1026 it gives inf
+
+(c) 
+starting from 1024 it gives inf
+starting from 30 it records in scientific notation
+
+(d)
+starting from 1024 it gives inf
+starting from 30 it records in scientific notation
+
+(e)
+starting from 1024 it gives inf
+yes, similar 
+
+7
+(do not understand the question)
+when h(bar) is normalized to 1 , distance :1.616 *10^35 meters/ time:5.319*10^-44 seconds
+
