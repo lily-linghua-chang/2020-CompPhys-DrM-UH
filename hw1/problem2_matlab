@@ -1,0 +1,22 @@
+a=[2 1 3];
+b=[1;1;3];
+a_dot_b=a*b;
+a_t=[2; 1; 3];
+b_t=[1 1 3];
+x=a*a_t;
+D=a_dot_b/x;
+E=D*a;
+E_t=E.';
+v=b-E_t;
+
+v_t=v.';
+z=v_t*v;
+Z=sqrt(z);
+y=b_t*b;
+Y=sqrt(y);
+c=Y/Z;
+V=c*v;
+disp('V1=');
+disp(a);
+disp('V2=');
+disp(V);
