@@ -1,0 +1,27 @@
+#include <iostream>  //needed to print to the screen
+#include <fstream> 
+
+int main(){
+
+int i;
+double a,x,y,z,c,X,Y;
+
+a=9/exp(2);
+y=a/(1+a)/(1+a);
+//this is differentiating x(t=2)
+z=1/(1+a);
+//this is x(t=2)
+
+
+for(i=1;i<=20;i++){
+    x=1/pow(10,i);//delta(t)
+    c=9/exp(2+x);
+    X=1/(1+c);
+    Y=fabs(y-((X-z)/x));
+ 
+ 	std::r1file<<x<<","<<Y<<std::endl;
+
+}
+
+std:: ofstream r1file("q1.txt");
+}
