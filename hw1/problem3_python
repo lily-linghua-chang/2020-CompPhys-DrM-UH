@@ -1,0 +1,27 @@
+import numpy as np
+
+
+a=np.array([2.,1.,3])
+b=np.array([[1.],[1.],[3]])
+a_dot_b=np.dot(a,b)
+a_t=a.transpose()
+b_t=b.transpose()
+x=np.dot(a,a_t) 
+D=a_dot_b/x
+E=D*a
+E_t=E.transpose()
+v=b-E_t
+
+v_t=v.transpose()
+z=np.dot(v_t,v)
+Z=np.sqrt(z)
+y=np.dot(b_t,b)
+Y=np.sqrt(y)
+c=Y/Z
+
+V=c*v
+
+print('V1=',a)
+print('V2=',V)
+
+#my result looks odd
