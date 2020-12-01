@@ -1,0 +1,30 @@
+import numpy as np
+
+def samesign(a, b):
+        return a * b > 0
+
+def bisect(func, low, high,tolerance=0.000001):
+    'Find root of continuous function where f(low) and f(high) have opposite signs'
+
+    assert not samesign(func(low), func(high),)
+
+    for i in range(100):
+        midpoint = (low + high) / 2.0
+        if samesign(func(low), func(midpoint)):
+            low = midpoint
+        else:
+            high = midpoint
+        if tolerance is not None and abs(high - low) < tolerance:
+            break 
+    return midpoint
+
+def f(x1):
+    return np.exp(x1)-x1**4 
+
+x1 = bisect(f, -2,0)
+print(x1, f(x1))
+
+#I found the three roots as the following
+#x = 8.61316967010498 ,f(x) = 0.000629823643976124
+#x = 1.429612159729004 ,f(x) = -2.515953349657707e-06
+#x = -0.8155527114868164 ,f(x)= 1.8476523309662873e-06
