@@ -1,0 +1,80 @@
+#include "NumMeth.h"
+#include <vector>
+#include <fstream>
+
+
+extern void rk4(double x[], int nX, double t, double tau,
+				void (*derivsRK)(double x[], double t, double param[], double deriv[]),
+				double param[]);
+//for reasons I cannot understand, Garcia has chosen to index his functions
+//starting at i=1.  x[0] is not updated using is rk4 function, so our vectors will have
+//the first element as a null value.  I will keep that notation in this script.
+//it is possible he intended the first element to be the time, but this is not
+//clear in his function definition.
+
+
+void F(double x[],double t,double param[],double deriv[]){
+	deriv[1]=x[2];
+	deriv[2]=-x[1];
+	
+}
+int main(){
+	
+	double t=0;
+	double T=5;
+	
+	//physical parameters
+	
+	double dt[6]; 
+	dt[0]=0.5;dt[1]=0.1;dt[2]=0.05; dt[3]=0.01;dt[4]=0.005;dt[5]=0.0001;
+	int nstep=((int)(T/dt));
+	double g1;
+	double g2;
+	//integrator parameters
+	
+	int dim=2;
+	double* param= new double[dim+1];
+	double* X=new double[dim+1];
+	double* deriv=new double[dim+1];
+	//memory allocation
+
+	for(int i=0;i==5;i++){
+dt[i];
+
+	X[1]=cos(t)+sin(t);
+	X[2]=-sin(t)+cos(t);
+	t=0;
+	std::ofstream outRK("RK_cpp.txt");
+	outRK<<dt<<","<<g1<<"\n";
+	for(int i=0;i<nstep-1;i++){
+		rk4(X,dim,t,dt,F,param);
+		t+=dt;
+	}
+	g1 = fabs(sin(T) - X[1])
+	outRK << dt << "," << g1 << "\n";
+	outRK.close();
+	
+	
+	
+	X[1]= cos(t) + sin(t);
+	X[2]= -sin(t) + cos(t);
+	t=0;
+	std::ofstream outVerlet("verlet_cpp.txt");
+	outVerlet<<dt<<","<<g2<<"\n";
+	for(int i=0;i<nstep-1;i++){
+		double xcurr=X[1];
+		X[1]=2*X[1]-X[2]+dt*dt*(-X[1]);
+		X[2]=xcurr;
+		t+=dt;
+		
+	}
+	g2 = fabs(sin(T) - X[1])
+		outVerlet << dt << "," << g2 << "\n";
+	outVerlet.close();
+	
+	
+	return 0;
+	}
+}
+
+
