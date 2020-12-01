@@ -1,0 +1,22 @@
+import numpy as np
+import math
+from numpy.linalg import inv
+
+#initial guesses
+x = 2
+y = 2.5
+i1 = 0
+
+
+while i1<100:
+    F=np.matrix([[(x**2)*np.exp(-x**2)+y**2-1],[(x**4)/(1+x*x*y*y)-1]])
+    J=np.matrix([[(2*x)*(np.exp(-x**2)-x*x*np.exp(-x**2)), 2*y],[(4*x**3/(1+x*x*y*y))-(x**4*2*y*y*x/(1+x*x*y*y)**2),-(x**4*2*y*x*x)/(1+x*x*y*y)**2]])
+    Jinv = inv(J) 
+    xn = np.array([[x],[y]])    
+    xn_1 = xn - (Jinv*F)
+    x = xn_1.item(0)
+    y = xn_1.item(1)
+    i1 = i1+1
+
+    
+print (xn)
