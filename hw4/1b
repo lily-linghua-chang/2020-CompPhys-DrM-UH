@@ -1,0 +1,24 @@
+import numpy as np
+from scipy import integrate
+import time
+
+a=0
+
+def deriv1(t,X,Y):
+	return a*X+Y-X*((X*X+Y*Y)*(X*X+Y*Y))
+def deriv2(t,X,Y):
+	return a*Y-X-X*((X*X+Y*Y)*(X*X+Y*Y))
+	
+	
+x0=0.01
+t=np.linspace(0,2/x0, 1000);
+
+t0=time.time();
+
+soln1=integrate.solve_ivp(deriv1,[0,2/x0],[x0],method='RK45',t_eval=t,atol=.001)
+soln2=integrate.solve_ivp(deriv2,[0,2/x0],[x0],method='RK45',t_eval=t,atol=.001)
+
+tf=time.time();
+print('took '+str(tf-t0)+' s')
+
+
