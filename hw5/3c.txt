@@ -1,0 +1,8 @@
+
+3(C)
+
+set1 and set3 are bi-exponential
+
+set2 is single exponential
+
+based on several sets of the initial fitting parameters I tried
