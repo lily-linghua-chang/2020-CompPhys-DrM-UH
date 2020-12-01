@@ -1,0 +1,19 @@
+import numpy as np
+import time
+
+
+A=np.empty((50,50))
+
+
+if (np.absolute(i-j)>3):
+    A[i]=A[j]=1 
+else:
+    A[i]=A[j]=0
+       
+A=(A+np.transpose(A))/2
+t0=time.time()
+v,w=np.linalg.eig(A)
+Wmax=np.max(v)
+Vmax=np.max(w)
+print(Wmax)
+print(Vmax)
